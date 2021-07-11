@@ -1,0 +1,14 @@
+name: BasicEnchants
+version: 1.0
+main: me.mobmaker.basicenchants.BasicEnchants
+api-version: 1.17
+prefix: BasicEnchants
+authors: [ Mobmaker ]
+description: Enchantment but better!
+commands:
+    extract:
+      description: Extracts an enchantment from a tool.
+      usage: /<command> [enchantment]
+    enchant:
+      description: Enchants a tool with an enchantment.
+      usage: /<command> [enchantment] [level]
