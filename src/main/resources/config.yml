@@ -1,0 +1,10 @@
+# The "penalty" configuration sets the penalty type for extracting enchants.
+# The current configuration values are "xp", "econ", or "none".
+penalty: xp
+# If the "penalty" is set to "econ", set the amount of money to be taken here:
+extract:
+  min: 10
+  max: 100
+
+#DO NOT TOUCH THIS VALUE
+version: 1.1

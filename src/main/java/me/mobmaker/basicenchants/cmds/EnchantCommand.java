@@ -9,14 +9,14 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.jetbrains.annotations.NotNull;
 
 public class EnchantCommand implements CommandExecutor {
     @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+    public boolean onCommand(@NotNull CommandSender sender, Command command, @NotNull String label, String[] args) {
         if (!command.getName().equalsIgnoreCase("enchant")) { return false; }
         if (args.length != 2) { return false; }
-        if (sender instanceof Player) {
-            Player p = (Player) sender;
+        if (sender instanceof Player p) {
             ItemStack hand = p.getInventory().getItemInMainHand();
             int enchantLevel;
             Enchantment enchant = Enchantment.getByKey(NamespacedKey.minecraft(args[0].toLowerCase()));
@@ -34,15 +34,9 @@ public class EnchantCommand implements CommandExecutor {
 
     private boolean sendStep(Player p, int step) {
         switch (step) {
-            case 1:
-                p.sendMessage(Messages.ENCHANT_INVALID.get());
-                return true;
-            case 2:
-                p.sendMessage(Messages.ENCHANT_BAD_TOOL.get());
-                return true;
-            case 3:
-                p.sendMessage(Messages.ENCHANT_NOT_NUMBER.get());
-                return true;
+            case 1: p.sendMessage(Messages.ENCHANT_INVALID.get());
+            case 2: p.sendMessage(Messages.ENCHANT_BAD_TOOL.get());
+            case 3: p.sendMessage(Messages.ENCHANT_NOT_NUMBER.get());
         }
         return true;
     }

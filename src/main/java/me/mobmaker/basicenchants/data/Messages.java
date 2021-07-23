@@ -16,7 +16,9 @@ public enum Messages {
     ENCHANT_NOT_NUMBER("enchant.notnumber", "**<red>HEY!** <gray>You must use a numeric value for your enchantment."),
     ENCHANT_EXTRACTED("enchant.extracted", "<gray>Successfully extracted <green><0> <gray>from your <aqua><1><gray>."),
     ENCHANT_ENCHANTED("enchant.enchanted", "<gray>Successfully enchanted your <aqua><0> <gray>with <green><1><gray>."),
-    ENCHANT_FULLINV("enchant.fullinv", "**<red>HEY!** <gray>Your inventory is full! Try emptying it a little :)")
+    ENCHANT_FULLINV("enchant.fullinv", "**<red>HEY!** <gray>Your inventory is full! Try emptying it a little :)"),
+    ENCHANT_MORE_EXP("enchant.morexp","**<red>HEY!** <gray>You don't have enough levels! You need <aqua><0> <gray>more levels."),
+    ENCHANT_MORE_CASH("enchant.morecash","**<red>HEY!** <gray>You don't have enough money! You need <aqua><0> <gray>more <1>.")
     ;
     private final String key;
     private final String defaultValue;

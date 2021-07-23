@@ -1,9 +1,10 @@
 name: BasicEnchants
-version: 1.0
+version: 1.1
 main: me.mobmaker.basicenchants.BasicEnchants
 api-version: 1.17
 prefix: BasicEnchants
 authors: [ Mobmaker ]
+softdepend: [ Vault ]
 description: Enchantment but better!
 commands:
     extract:
@@ -11,4 +12,16 @@ commands:
       usage: /<command> [enchantment]
     enchant:
       description: Enchants a tool with an enchantment.
+      permission: basicenchants.enchant
       usage: /<command> [enchantment] [level]
+
+permissions:
+  basicenchants.*:
+    description: Allows full control over the commands within BasicEnchants.
+    default: false
+  basicenchants.extract:
+    description: Allows a player to extract an item from their tool.
+    default: true
+  basicenchants.enchant:
+    description: Allows a player to enchant their tool for free.
+    default: false
