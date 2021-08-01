@@ -26,6 +26,7 @@ public class ExtractCommand implements CommandExecutor {
 
     private final HashMap<UUID, XPLevel> xpPersist = new HashMap<>();
     private final HashMap<UUID, CashAmount> cashPersist = new HashMap<>();
+    private final HashMap<UUID, Penalty> penaltyVal = new HashMap<>();
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, Command command, @NotNull String label, String[] args) {
@@ -52,7 +53,10 @@ public class ExtractCommand implements CommandExecutor {
             p.getInventory().addItem(book);
             p.sendMessage(Messages.ENCHANT_EXTRACTED.get(
                     extractEnchant.displayName(enchantLevel).color(NamedTextColor.GREEN),
-                    hand.displayName().color(NamedTextColor.AQUA)));
+                    hand.displayName().color(NamedTextColor.AQUA),
+                    Component.text(penaltyVal.get(p.getUniqueId()).amount),
+                    Component.text(penaltyVal.get(p.getUniqueId()).type)
+            ));
             return true;
         }
         return false;
@@ -61,6 +65,8 @@ public class ExtractCommand implements CommandExecutor {
     private record XPLevel (Material mat, Enchantment enc, int levels) { }
 
     private record CashAmount (Material mat, Enchantment enc, double cash) { }
+
+    private record Penalty (String type, double amount) { }
 
     private boolean sendStep(Player p, int step) {
         switch (step) {
@@ -109,6 +115,7 @@ public class ExtractCommand implements CommandExecutor {
                 }
                 xpPersist.remove(p.getUniqueId());
                 p.setLevel(p.getLevel() - expNeeded);
+                penaltyVal.put(p.getUniqueId(), new Penalty("levels", expNeeded));
                 return true;
             case "econ" :
                 if (!BasicEnchants.isEcon) {
@@ -131,6 +138,7 @@ public class ExtractCommand implements CommandExecutor {
                 }
                 xpPersist.remove(p.getUniqueId());
                 econ.withdrawPlayer(p, cashNeeded);
+                penaltyVal.put(p.getUniqueId(), new Penalty(econ.currencyNamePlural(), cashNeeded));
                 return true;
             case "none":
                 return true;

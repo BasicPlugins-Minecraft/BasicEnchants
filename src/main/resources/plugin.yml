@@ -24,4 +24,4 @@ permissions:
     default: true
   basicenchants.enchant:
     description: Allows a player to enchant their tool for free.
-    default: false
+    default: op
