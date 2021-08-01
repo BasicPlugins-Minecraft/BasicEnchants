@@ -1,10 +1,13 @@
 # The "penalty" configuration sets the penalty type for extracting enchants.
 # The current configuration values are "xp", "econ", or "none".
+# "econ" requires Vault & a compatible economy plugin.
 penalty: xp
 # If the "penalty" is set to "econ", set the amount of money to be taken here:
 extract:
   min: 10
   max: 100
 
-#DO NOT TOUCH THIS VALUE
+# If this value is lower than the version of the plugin, delete this file and a new one will be created.
+# This is necessary to ensure you have all the latest changes for the config file.
+# Deleting this file will DELETE ALL CHANGES, so make sure to remember what you changed.
 version: 1.1
